@@ -15,16 +15,21 @@ The `cdk.json` file tells the CDK Toolkit how to execute your app.
 
 ----
 
+## メモ
 
+### プロジェクト作成時
 ```
-cdk init <xxx>
-```
-```
-aws configure
+cdk init <xxx>  // 初期化
 ```
 
+### 初期化
+```
+aws configure   // AWS認証情報設定
+```
 
-|コマンド|説明|
+### インストール対象
+
+|パッケージ|説明|
 |---|---|
 |@aws-cdk/*|CDK v1 (インストールしないこと)|
 |aws-cdk|CDK v2|
@@ -33,6 +38,8 @@ aws configure
 |aws-sdk/*|SDK v2 (インストールしないこと)|
 |@aws-sdk/*|SDK v3|
 
+
+### CDKコマンド
 
 |コマンド|説明|
 |---|---|
