@@ -49,3 +49,5 @@ aws configure   // AWS認証情報設定
 |cdk deploy|デプロイ|
 |cdk destroy|削除|
 
+### 注意事項
+cdkでS3にhosting用のファイルを入れた場合、削除時は先に手動で削除してからdestroyしないと失敗する
