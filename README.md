@@ -31,7 +31,6 @@ aws configure   // AWS認証情報設定
 
 |パッケージ|説明|
 |---|---|
-|@aws-cdk/*|CDK v1 (インストールしないこと)|
 |aws-cdk|CDK v2|
 |aws-cdk-lib/*|CDK v2|
 |@types/aws-xxxx|AWS SDK 型情報|
