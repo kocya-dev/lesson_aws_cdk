@@ -1,5 +1,7 @@
 import * as cdk from 'aws-cdk-lib';
 import { Construct } from 'constructs';
+import * as lambda from 'aws-cdk-lib/aws-lambda';
+import * as path from 'path';
 // import * as sqs from 'aws-cdk-lib/aws-sqs';
 
 export class S3HostingStack extends cdk.Stack {
@@ -15,6 +17,7 @@ export class S3HostingStack extends cdk.Stack {
 
     // S3
     const websiteBucket = new cdk.aws_s3.Bucket(this, 'WebsiteBucket', {
+      bucketName: 's3-hosting-bucket-test',
       removalPolicy: cdk.RemovalPolicy.DESTROY,
     });
     
@@ -40,6 +43,7 @@ export class S3HostingStack extends cdk.Stack {
     });
 
     websiteBucket.addToResourcePolicy(webSiteBucketPolicyStatement);
+
 
     // CloudFront
     const distribution = new cdk.aws_cloudfront.Distribution(this, 'distribution', {
@@ -72,17 +76,10 @@ export class S3HostingStack extends cdk.Stack {
       priceClass: cdk.aws_cloudfront.PriceClass.PRICE_CLASS_ALL,
     });
 
-    // S3コンテンツ
+    // S3デプロイ先バケット操作
     new cdk.aws_s3_deployment.BucketDeployment(this, 'WebsiteDeploy', {
       sources: [
-        cdk.aws_s3_deployment.Source.data(
-          '/index.html',
-          '<html><body><h1>Hello World</h1></body></html>'
-        ),
-        cdk.aws_s3_deployment.Source.data(
-          '/error.html',
-          '<html><body><h1>Error!!!!!!!!!!!!!</h1></body></html>'
-        ),
+        cdk.aws_s3_deployment.Source.asset('./static'),
         cdk.aws_s3_deployment.Source.data('/favicon.ico', ''),
       ],
       destinationBucket: websiteBucket,

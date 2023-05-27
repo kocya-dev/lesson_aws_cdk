@@ -17,7 +17,7 @@ export class LessonAwsCdkStack extends cdk.Stack {
 
     const hello =  new lambda.Function(this, 'HelloHandler', {
       runtime: lambda.Runtime.NODEJS_18_X,
-      code: lambda.Code.fromAsset(`src\\api\\hello`),
+      code: lambda.Code.fromAsset(`src/api/hello`),
       handler: 'hello.handler'
     });
     new apigw.LambdaRestApi(this, 'EndpointApiHello', {
@@ -26,7 +26,7 @@ export class LessonAwsCdkStack extends cdk.Stack {
 
     const hello2 =  new lambda.Function(this, 'Hello2Handler', {
       runtime: lambda.Runtime.NODEJS_18_X,
-      code: lambda.Code.fromAsset(`src\\api\\hello2`),
+      code: lambda.Code.fromAsset(`src/api/hello2`),
       handler: 'hello2.handler'
     });
     new apigw.LambdaRestApi(this, 'EndpointApiHello2', {

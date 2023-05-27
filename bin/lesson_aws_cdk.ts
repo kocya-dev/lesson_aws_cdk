@@ -20,6 +20,7 @@ new LessonAwsCdkStack(app, 'LessonAwsCdkStack', {
 
   /* For more information, see https://docs.aws.amazon.com/cdk/latest/guide/environments.html */
 });
-new S3HostingStack(app, 'S3HostingStack', {
 
+new S3HostingStack(app, 'S3HostingStack', {
+  env: { region: 'us-east-1' },
 });
