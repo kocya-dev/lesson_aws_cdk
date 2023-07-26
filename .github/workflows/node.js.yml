@@ -24,3 +24,7 @@ jobs:
     - run: npm run build --if-present
     - run: npx jest --coverage
     - run: ls -al ./coverage/
+    - name: upload files
+      uses: actions/upload-artifact@v3
+      with:
+        path: ./coverage/lcov-report/
